@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="myConsole" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg %n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+    <appender name="log_file_1" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>D:\temp\springboot-test\logs\ctrl.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover 保存历史记录到这个文件夹一日起为后缀 -->
+            <fileNamePattern>D:\temp\springboot-test\logs\ctrl.log.%d{yyyy-MM-dd-HH-mm}.log</fileNamePattern>
+            <!-- keep 30 days' worth of history -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>10MB</maxFileSize>
+        </triggeringPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg %n</pattern>
+            <charset>UTF-8</charset> <!-- 此处设置字符集 -->
+        </encoder>
+    </appender>
+
+    <appender name="log_file_2" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>D:\temp\springboot-test\logs\dto.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover 保存历史记录到这个文件夹一日起为后缀 -->
+            <fileNamePattern>D:\temp\springboot-test\logs\dto.log.%d{yyyy-MM-dd-HH-mm}.log</fileNamePattern>
+            <!-- keep 30 days' worth of history -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>10MB</maxFileSize>
+        </triggeringPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg %n</pattern>
+            <charset>UTF-8</charset> <!-- 此处设置字符集 -->
+        </encoder>
+    </appender>
+
+    <!--按照包路径输出日志-->
+    <logger name="com.czs.practice.springlearn.ctrl" level="info" additivity="false">
+        <appender-ref ref="myConsole"/>
+        <appender-ref ref="log_file_1"/>
+    </logger>
+
+    <!--按照包路径输出日志-->
+    <logger name="com.czs.practice.springlearn.dto" level="info" additivity="false">
+        <appender-ref ref="myConsole"/>
+        <appender-ref ref="log_file_2"/>
+    </logger>
+
+    <ROOT level="INFO">
+        <appender-ref ref="myConsole" />
+        <appender-ref ref="log_file_1" />
+        <appender-ref ref="log_file_2" />
+    </ROOT>
+
+</configuration>
