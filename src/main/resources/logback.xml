@@ -7,7 +7,7 @@
         </encoder>
     </appender>
     <appender name="log_file_1" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <!--<file>D:\temp\springboot-test\logs\ctrl.log</file>-->
+        <file>D:\temp\springboot-test\logs\ctrl.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- daily rollover 保存历史记录到这个文件夹一日起为后缀 -->
             <fileNamePattern>D:\temp\springboot-test\logs\ctrl.log.%d{yyyy-MM-dd}.log</fileNamePattern>
@@ -24,7 +24,7 @@
     </appender>
 
     <appender name="log_file_2" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <!--<file>D:\temp\springboot-test\logs\dto.log</file>-->
+        <file>D:\temp\springboot-test\logs\dto.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- daily rollover 保存历史记录到这个文件夹一日起为后缀 -->
             <fileNamePattern>D:\temp\springboot-test\logs\dto.log.%d{yyyy-MM-dd}.log</fileNamePattern>
