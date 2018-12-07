@@ -10,7 +10,7 @@
         <file>D:\temp\springboot-test\logs\ctrl.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- daily rollover 保存历史记录到这个文件夹一日起为后缀 -->
-            <fileNamePattern>D:\temp\springboot-test\logs\ctrl.log.%d{yyyy-MM-dd-HH-mm}.log</fileNamePattern>
+            <fileNamePattern>D:\temp\springboot-test\logs\ctrl.log.%d{yyyy-MM-dd}.log</fileNamePattern>
             <!-- keep 30 days' worth of history -->
             <maxHistory>30</maxHistory>
         </rollingPolicy>
@@ -27,7 +27,7 @@
         <file>D:\temp\springboot-test\logs\dto.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- daily rollover 保存历史记录到这个文件夹一日起为后缀 -->
-            <fileNamePattern>D:\temp\springboot-test\logs\dto.log.%d{yyyy-MM-dd-HH-mm}.log</fileNamePattern>
+            <fileNamePattern>D:\temp\springboot-test\logs\dto.log.%d{yyyy-MM-dd}.log</fileNamePattern>
             <!-- keep 30 days' worth of history -->
             <maxHistory>30</maxHistory>
         </rollingPolicy>
