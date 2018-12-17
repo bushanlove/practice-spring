@@ -6,9 +6,9 @@ package com.czs.practice.springlearn.tools;
 public class MyNioUtils {
 
 
-    public static void main(String[] args) {
-
-    }
+//    public static void main(String[] args) {
+//
+//    }
 
     /**
      * 读取 文件
