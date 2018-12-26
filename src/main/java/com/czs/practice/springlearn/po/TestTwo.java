@@ -8,6 +8,15 @@ public class TestTwo {
     private String city_id;
     private String vip_line_id;
     private String driverName;
+    private String driverMobile;
+
+    public String getDriverMobile() {
+        return driverMobile;
+    }
+
+    public void setDriverMobile(String driverMobile) {
+        this.driverMobile = driverMobile;
+    }
 
     public String getDriverName() {
         return driverName;
@@ -67,6 +76,7 @@ public class TestTwo {
                 ", city_id='" + city_id + '\'' +
                 ", vip_line_id='" + vip_line_id + '\'' +
                 ", driverName='" + driverName + '\'' +
+                ", driverMobile='" + driverMobile + '\'' +
                 '}';
     }
 }
