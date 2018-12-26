@@ -9,6 +9,7 @@ import java.lang.reflect.Method;
 public class CopySpecialUtil {
 
 
+
     public static void main(String[] args) {
 
 
@@ -29,16 +30,16 @@ public class CopySpecialUtil {
         two.setDriverName("this is two");
 
         try {
-//            System.out.println(two);
-//            System.out.println("-------------------------------");
-//            copyCamel2Underline(one,two);
-//            System.out.println(two);
+            System.out.println(two);
+            System.out.println("-------------------------------");
+            copyCamel2Underline(one,two);
+            System.out.println(two);
 //            System.out.println(copyCamel2Underline(one,TestTwo.class));
 
-            System.out.println(one);
-            System.out.println("-------------------------------");
-            copyUnderline2Camel(two,one);
-            System.out.println(one);
+//            System.out.println(one);
+//            System.out.println("-------------------------------");
+//            copyUnderline2Camel(two,one);
+//            System.out.println(one);
 //            System.out.println(copyUnderline2Camel(two,TestOne.class));
 
         } catch (Exception e) {
@@ -67,6 +68,8 @@ public class CopySpecialUtil {
 
         for(Field sourceField : sourceFields){
             String name = sourceField.getName();//属性名
+            //转换属性名从 驼峰到下划线
+            String nameUnderline = ConvertCamel.underline(new StringBuffer(sourceField.getName())).toString();
             Class type = sourceField.getType();//属性类型
 
             String methodName = name.substring(0, 1).toUpperCase() + name.substring(1);
@@ -77,10 +80,9 @@ public class CopySpecialUtil {
 
             for(Field targetField : targetFields){
                 String targetName = targetField.getName();//目标对象的属性名
-                //转换属性名从 驼峰到下划线
-                name = ConvertCamel.underline(new StringBuffer(name)).toString();
-                if(targetName.equals(name)){
-                    methodName = name.substring(0, 1).toUpperCase() + name.substring(1);
+                //第二个判断用于兼容历史版本中出现的驼峰和下划线命名混合的情况
+                if(targetName.equals(nameUnderline) || targetName.equals(name) ){
+                    methodName = targetName.substring(0, 1).toUpperCase() + targetName.substring(1);
                     Method setMethod = targetClass.getMethod("set" + methodName, type);//属性对应的set方法
                     setMethod.invoke(target, value);//执行目标对象的set方法
                 }
@@ -115,6 +117,8 @@ public class CopySpecialUtil {
 
         for(Field sourceField : sourceFields){
             String name = sourceField.getName();//属性名
+            //转换属性名从 下划线到驼峰
+            String nameCamel = ConvertCamel.camel(new StringBuffer(sourceField.getName())).toString();
             Class type = sourceField.getType();//属性类型
 
             String methodName = name.substring(0, 1).toUpperCase() + name.substring(1);
@@ -125,10 +129,9 @@ public class CopySpecialUtil {
 
             for(Field targetField : targetFields){
                 String targetName = targetField.getName();//目标对象的属性名
-                //转换属性名从 驼峰到下划线
-                name = ConvertCamel.camel(new StringBuffer(name)).toString();
-                if(targetName.equals(name)){
-                    methodName = name.substring(0, 1).toUpperCase() + name.substring(1);
+                //第二个判断用于兼容历史版本中出现的驼峰和下划线命名混合的情况
+                if(targetName.equals(name) || targetName.equals(nameCamel)){
+                    methodName = targetName.substring(0, 1).toUpperCase() + targetName.substring(1);
                     Method setMethod = targetClass.getMethod("set" + methodName, type);//属性对应的set方法
                     setMethod.invoke(target, value);//执行目标对象的set方法
                 }
